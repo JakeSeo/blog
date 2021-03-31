@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     // For State Management we use GetX
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter Blog',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBgColor,
