@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:news/controllers/MenuController.dart';
 import 'package:news/screens/main/components/social.dart';
 import 'package:news/screens/main/components/web_menu.dart';
 
 import '../../../constants.dart';
+import '../../../responsive.dart';
 
 class Header extends StatelessWidget {
-  const Header({
-    Key key,
-  }) : super(key: key);
+  final MenuController _controller = Get.put(MenuController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,19 @@ class Header extends StatelessWidget {
               constraints: BoxConstraints(maxWidth: kMaxWidth),
               child: Row(
                 children: [
+                  if (!Responsive.isDesktop(context))
+                    IconButton(
+                      icon: Icon(
+                        Icons.menu,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        _controller.openOrCloseDrawer();
+                      },
+                    ),
                   SvgPicture.asset("assets/icons/logo.svg"),
                   Spacer(),
-                  WebMenu(),
+                  if (Responsive.isDesktop(context)) WebMenu(),
                   Spacer(),
                   // Social
                   Social(),
