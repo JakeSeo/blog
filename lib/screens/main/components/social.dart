@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
+import '../../../responsive.dart';
 
 class Social extends StatelessWidget {
   const Social({
@@ -12,18 +13,25 @@ class Social extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset("assets/icons/behance-alt.svg"),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
-          child: SvgPicture.asset("assets/icons/feather_dribble.svg"),
-        ),
-        SvgPicture.asset("assets/icons/feather_twitter.svg"),
+        if (!Responsive.isMobile(context))
+          SvgPicture.asset("assets/icons/behance-alt.svg"),
+        if (!Responsive.isMobile(context))
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+            child: SvgPicture.asset("assets/icons/feather_dribble.svg"),
+          ),
+        if (!Responsive.isMobile(context))
+          SvgPicture.asset("assets/icons/feather_twitter.svg"),
         SizedBox(width: kDefaultPadding),
         ElevatedButton(
           onPressed: () {},
           style: TextButton.styleFrom(
             padding: EdgeInsets.symmetric(
-                horizontal: kDefaultPadding * 1.5, vertical: kDefaultPadding),
+              horizontal: kDefaultPadding * 1.5,
+              vertical:
+                  kDefaultPadding / (Responsive.isDesktop(context) ? 1 : 2),
+            ),
           ),
           child: Text("Let's Talk"),
         ),

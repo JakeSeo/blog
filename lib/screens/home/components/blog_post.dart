@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news/models/Blog.dart';
 
 import '../../../constants.dart';
+import '../../../responsive.dart';
 
 class BlogPostCard extends StatelessWidget {
   final Blog blog;
@@ -57,8 +58,10 @@ class BlogPostCard extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: kDefaultPadding),
                   child: Text(
                     blog.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 32,
+                      fontSize: Responsive.isDesktop(context) ? 32 : 24,
                       fontFamily: "Raleway",
                       color: kDarkBlackColor,
                       height: 1.3,

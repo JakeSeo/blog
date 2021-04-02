@@ -82,7 +82,8 @@ class Header extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: kDefaultPadding),
+            if (Responsive.isDesktop(context))
+              SizedBox(height: kDefaultPadding),
           ],
         ),
       ),
